@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//  Hello
 
 class chat extends StatefulWidget {
   @override
