@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:project/login.dart';
-import 'package:project/user.dart';
+import 'package:get/get.dart';
+import 'package:project/controller/product_controller.dart';
+import 'package:project/view/login.dart';
+import 'package:project/view/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -17,6 +19,7 @@ class pro extends StatefulWidget {
 class _proState extends State<pro> {
   int activeIndex = 0;
   final controller = CarouselController();
+  final productcontroller = Get.put(ProductController());
   // ignore: non_constant_identifier_names
   final AssetImage = [
     'assets/Dell.jpg',
@@ -26,6 +29,12 @@ class _proState extends State<pro> {
     'assets/Prestigio.jpg',
     'assets/Surface.jpg',
   ];
+
+  @override
+  void initState() {
+    productcontroller.fetchData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +83,8 @@ class _proState extends State<pro> {
                           ),
                         );
 
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) => chris()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => chris()));
                       },
                       color: Colors.white),
                   const Text(
@@ -228,7 +237,6 @@ class _proState extends State<pro> {
                     children: [
                       Container(
                           width: 250,
-                          // height: 150,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
@@ -294,7 +302,6 @@ class _proState extends State<pro> {
                     children: [
                       Container(
                           width: 250,
-                          // height: 150,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(

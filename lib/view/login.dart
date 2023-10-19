@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:project/home.dart';
-import 'package:project/register.dart';
+import 'package:project/view/home.dart';
+import 'package:project/view/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void navigateNextPage(BuildContext ctx) {

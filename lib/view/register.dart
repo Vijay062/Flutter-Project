@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:project/login.dart';
-import 'package:project/show.dart';
+import 'package:project/view/login.dart';
+import 'package:project/view/show.dart';
 
 void navigateNextPage(BuildContext ctx) {
   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {

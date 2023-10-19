@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:project/fetch.dart';
-import 'package:project/home.dart';
+import 'package:project/view/fetch.dart';
+import 'package:project/view/home.dart';
 import 'package:project/main.dart';
 
 void main() => runApp(MyApp());
