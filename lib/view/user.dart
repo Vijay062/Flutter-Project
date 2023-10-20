@@ -53,6 +53,7 @@ class chatState extends State<chat> {
           },
         ),
       ));
+      print('Updated Successfully');
     } else {
       print("Error: ${response.statusCode} - ${response.body}");
       throw Exception('Failed to update data');
@@ -83,6 +84,7 @@ class chatState extends State<chat> {
           },
         ),
       ));
+      print('Account Deleted Successfully');
     } else {
       print("Error: ${response.statusCode} - ${response.body}");
       throw Exception('Failed to Delete data');
@@ -159,7 +161,31 @@ class chatState extends State<chat> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: deleteData,
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          actions: [
+                            TextButton(
+                                onPressed: () async {
+                                  deleteData();
+                                },
+                                child: const Text("YES")),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text("NO")),
+                          ],
+                          title: const Text(
+                            "ARE YOU SURE TO DELETE ACCOUNT?",
+                            style: TextStyle(
+                              color: Colors.deepPurple,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                     child: Text("DELETE ACCOUNT"),
                   ),
                   ElevatedButton(

@@ -60,6 +60,7 @@ class NewState extends State<New> {
           onPressed: () {},
         ),
       ));
+      print('Registered Successfully');
       print('data sent successfully');
       print('Response:${response.body}');
     } else {

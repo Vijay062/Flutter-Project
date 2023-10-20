@@ -52,6 +52,7 @@ class chrisState extends State<chris> {
           onPressed: () {},
         ),
       ));
+      print('Logged In Successfully');
       print('data sent successfully');
       // print('Response:${response.body}');
       var data = json.decode(response.body);
@@ -70,6 +71,7 @@ class chrisState extends State<chris> {
           onPressed: () {},
         ),
       ));
+      print('Failed To Login');
       print('Error sending data.status code: ${response.statusCode}');
       print('Response:${response.body}');
     }
@@ -180,7 +182,6 @@ class chrisState extends State<chris> {
                       child: const Text("GO TO REGISTER"),
                       onPressed: () {
                         navigateNextPage(context);
-                        print("Registered Successfully");
                       },
                     ),
                     const SizedBox(height: 10),
