@@ -50,9 +50,29 @@ class NewState extends State<New> {
       body: jsonData,
     );
     if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("REGISTERED SUCCESSFULLY"),
+        behavior: SnackBarBehavior.floating,
+        width: 500,
+        duration: Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'DISMISS',
+          onPressed: () {},
+        ),
+      ));
       print('data sent successfully');
       print('Response:${response.body}');
     } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("INVALID CREDENTIALS"),
+        behavior: SnackBarBehavior.floating,
+        width: 500,
+        duration: Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'DISMISS',
+          onPressed: () {},
+        ),
+      ));
       print('Error sending data.status code: ${response.statusCode}');
       print('Response:${response.body}');
     }
@@ -62,16 +82,21 @@ class NewState extends State<New> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       body: Center(
-        child: SizedBox(
-          width: 420,
+        child: Container(
+          height: 700,
+          width: 650,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.white,
+          ),
           child: Form(
             key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 5),
+                SizedBox(height: 15),
                 Text(
                   "REGISTRATION PAGE",
                   style: TextStyle(
@@ -89,6 +114,9 @@ class NewState extends State<New> {
                     hintText: "ENTER YOUR NAME",
                     hintStyle: TextStyle(color: Colors.purple),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -132,6 +160,9 @@ class NewState extends State<New> {
                     hintText: "ENTER BRAND NAME",
                     hintStyle: TextStyle(color: Colors.purple),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -148,6 +179,9 @@ class NewState extends State<New> {
                     hintText: "ENTER YOUR ADDRESS",
                     hintStyle: TextStyle(color: Colors.purple),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -176,6 +210,9 @@ class NewState extends State<New> {
                         )),
                     hintStyle: TextStyle(color: Colors.purple),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -194,6 +231,9 @@ class NewState extends State<New> {
                     hintText: "ENTER YOUR MOBILE NUMBER",
                     hintStyle: TextStyle(color: Colors.purple),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                 ),
                 TextFormField(
@@ -204,6 +244,9 @@ class NewState extends State<New> {
                     hintText: "ENTER YOUR EMAIL ID",
                     hintStyle: TextStyle(color: Colors.purple),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                   validator: (value) {
                     bool emailvalid = RegExp(
@@ -220,7 +263,7 @@ class NewState extends State<New> {
                 ),
                 Row(
                   children: [
-                    SizedBox(width: 50),
+                    SizedBox(width: 150),
                     ElevatedButton(
                       onPressed: () {
                         if (_formkey.currentState!.validate()) {
@@ -236,11 +279,13 @@ class NewState extends State<New> {
                                     )),
                           );
                         }
-                        postDataToServer();
+                        if (_formkey.currentState!.validate()) {
+                          postDataToServer();
+                        }
                       },
                       child: const Text("REGISTER"),
                     ),
-                    SizedBox(width: 50),
+                    SizedBox(width: 100),
                     ElevatedButton(
                       onPressed: () {
                         navigateNextPage(context);

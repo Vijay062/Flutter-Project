@@ -82,9 +82,6 @@ class _proState extends State<pro> {
                             ),
                           ),
                         );
-
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => chris()));
                       },
                       color: Colors.white),
                   const Text(

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:project/view/fetch.dart';
 import 'package:project/view/home.dart';
 import 'package:project/main.dart';
+import 'package:project/view/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -69,6 +70,7 @@ class chatState extends State<chat> {
       },
     );
     if (response.statusCode == 200) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => chris()));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("DELETED SUCCESSFULLY"),
         behavior: SnackBarBehavior.floating,
